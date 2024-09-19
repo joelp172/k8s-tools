@@ -1,0 +1,26 @@
+# https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
+mode: deployment
+
+image:
+  repository: otel/opentelemetry-collector-k8s
+
+presets:
+# enables the k8sattributesprocessor and adds it to the traces
+  kubernetesAttributes:
+    enabled: true
+
+config:
+  exporters:
+    otlp/grafanatempo:
+      endpoint: tempo.tracing.svc:4317
+      tls:
+        insecure: true
+
+  service:
+    pipelines:
+      traces:
+        receivers:
+          - otlp
+          - jaeger
+        exporters:
+          - otlp/grafanatempo

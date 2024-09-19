@@ -1,0 +1,31 @@
+# This is a simple cronjob that sends traces to the OTEL Collector every minute.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: generate-sample-traces
+  namespace: tracing
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  schedule: "30 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      ttlSecondsAfterFinished: 3600
+      template:
+        spec:
+          containers:
+          - name: traces
+            image: ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:v0.96.0
+            args:
+              - traces
+              - --otlp-insecure
+              - --rate
+              - "20"
+              - --duration
+              - 5s
+              - --otlp-endpoint
+              # - tempo.tracing.svc:4317
+              - opentelemetry-collector.tracing.svc:4317
+          restartPolicy: Never
