@@ -20,7 +20,7 @@ spec:
       targetRevision: 8.5.1
       helm:
         valueFiles:
-        - $values/argocd/observability/grafana/values.yaml
+        - $values/argocd/observability/values/grafana-values.yaml
       path: argocd/observability/grafana
 
   destination:
