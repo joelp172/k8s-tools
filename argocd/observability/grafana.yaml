@@ -17,7 +17,7 @@ spec:
     # Install Grafana app
     - repoURL: https://grafana.github.io/helm-charts
       chart: grafana
-      targetRevision: 8.5.1
+      targetRevision: 8.5.2
       helm:
         valueFiles:
         - $values/argocd/observability/values/grafana-values.yaml
