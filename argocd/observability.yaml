@@ -5,9 +5,15 @@ metadata:
   namespace: argocd
 spec:
   description: Manages all observability related resources
+
   destinations:
-  - namespace: argocd
+  - namespace: '*'
     name: in-cluster
+
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
   sourceRepos:
   - https://github.com/joelp172/k8s-tools.git
   - https://grafana.github.io/helm-charts

@@ -26,6 +26,7 @@ spec:
   destination:
     namespace: grafana
     name: in-cluster
+
   syncPolicy:
     automated:
       prune: false
