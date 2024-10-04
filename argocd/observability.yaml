@@ -26,7 +26,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: observability-apps
+  project: app-of-apps
 
   # Source of the application manifests
   source:
