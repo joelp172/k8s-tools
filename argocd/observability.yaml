@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: observability-apps
+  namespace: argocd
+spec:
+  description: Manages all observability related resources
+  destinations:
+  - namespace: argocd
+    name: in-cluster
+  sourceRepos:
+  - https://github.com/joelp172/k8s-tools.git
+  - https://grafana.github.io/helm-charts
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: observability-apps
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/joelp172/k8s-tools.git
+    targetRevision: HEAD
+    path: argocd/observability
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    name: in-cluster
+    namespace: argocd
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
