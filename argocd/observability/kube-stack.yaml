@@ -4,7 +4,7 @@ kind: Application
 metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  name: metrics
+  name: prometheus
   namespace: argocd
 spec:
   project: observability-apps
