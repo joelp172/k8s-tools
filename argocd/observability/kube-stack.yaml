@@ -1,0 +1,36 @@
+# https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  name: metrics
+  namespace: argocd
+spec:
+  project: observability-apps
+  sources:
+    # Give the Helm release access to a values file so we don't have to inline
+    - repoURL: https://github.com/joelp172/k8s-tools.git
+      targetRevision: HEAD
+      ref: values
+
+    # Install Prometheus app
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: prometheus
+      targetRevision: 25.27.0
+
+    # Install Promethues CRDs
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: prometheus-operator-crds
+      targetRevision: 15.0.0
+
+  destination:
+    namespace: metrics
+    name: in-cluster
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
