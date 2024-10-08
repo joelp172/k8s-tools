@@ -1,10 +1,10 @@
-# https://github.com/grafana/helm-charts/tree/main/charts/grafana
+# https://github.com/grafana/helm-charts/tree/main/charts/tempo
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  name: grafana
+  name: tempo
   namespace: argocd
 spec:
   project: observability-apps
@@ -14,16 +14,16 @@ spec:
       targetRevision: HEAD
       ref: values
 
-    # Install Grafana app
+    # Install Tempo app
     - repoURL: https://grafana.github.io/helm-charts
-      chart: grafana
-      targetRevision: 8.5.2
+      chart: tempo
+      targetRevision: 1.10.3
       helm:
         valueFiles:
-        - $values/argocd/observability/values/grafana-values.yaml
+        - $values/argocd/observability/values/tempo-values.yaml
 
   destination:
-    namespace: grafana
+    namespace: tracing
     name: in-cluster
 
   syncPolicy:
