@@ -15,6 +15,7 @@ spec:
     kind: '*'
 
   sourceRepos:
+  - https://github.com/joelp172/k8s-tools.git
   - https://zapier.github.io/kubechecks/
 
 ---
