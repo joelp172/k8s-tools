@@ -17,7 +17,7 @@ configMap:
 deployment:
   envFrom:
     - secretRef:
-      name: kubechecks-config
+        name: kubechecks-config
 
 # secrets:
 #   create: true
