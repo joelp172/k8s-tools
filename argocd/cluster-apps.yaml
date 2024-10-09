@@ -4,7 +4,7 @@ metadata:
   name: cluster-apps
   namespace: argocd
 spec:
-  description: Manages all observability related resources
+  description: Manages all cluster related resources
 
   destinations:
   - namespace: '*'
