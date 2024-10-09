@@ -10,7 +10,7 @@ configMap:
     KUBECHECKS_WEBHOOK_URL_PREFIX: kubechecks
     ARGOCD_EXEC_TIMEOUT: 600s
     KUBECHECKS_OTEL_COLLECTOR_PORT: "4317"
-    KUBECHECKS_OTEL_ENABLED: "true"
+    KUBECHECKS_OTEL_ENABLED: "false"
     KUBECHECKS_VCS_TYPE: "github"
     KUBECHECKS_TIDY_OUTDATED_COMMENTS_MODE: "hide" # other options delete
 
@@ -18,7 +18,3 @@ deployment:
   envFrom:
     - secretRef:
         name: kubechecks-config
-
-# secrets:
-#   create: true
-#   name: kubechecks-config
