@@ -18,3 +18,16 @@ deployment:
   envFrom:
     - secretRef:
         name: kubechecks-config
+
+ingress:
+  create: true
+  className: "nginx"
+  # annotations:
+  #   kubernetes.io/ingress.class: nginx
+  #   # See https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html#supported-annotations
+  #   kubernetes.io/tls-acme: "true"
+  hosts:
+    kubechecks.local:
+      paths:
+        - path: "/hooks"
+          pathType: Prefix
