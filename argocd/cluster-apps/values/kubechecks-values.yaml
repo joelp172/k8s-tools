@@ -14,6 +14,11 @@ configMap:
     KUBECHECKS_VCS_TYPE: "github"
     KUBECHECKS_TIDY_OUTDATED_COMMENTS_MODE: "hide" # other options delete
 
-envFrom:
-  - secretRef:
+deployment:
+  envFrom:
+    - secretRef:
       name: kubechecks-config
+
+# secrets:
+#   create: true
+#   name: kubechecks-config
