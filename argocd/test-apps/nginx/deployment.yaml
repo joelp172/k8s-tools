@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: nginx
   namespace: test-apps
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
@@ -18,3 +20,6 @@ spec:
           image: nginx:latest
           ports:
             - containerPort: 80
+          envFrom:
+          - secretRef:
+              name: nginx-secret
