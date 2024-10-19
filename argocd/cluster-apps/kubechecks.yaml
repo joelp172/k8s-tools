@@ -22,6 +22,11 @@ spec:
         valueFiles:
         - $values/argocd/cluster-apps/values/kubechecks-values.yaml
 
+    # Install extras
+    - repoURL: https://github.com/joelp172/k8s-tools.git
+      targetRevision: HEAD
+      path: argocd/cluster-apps/kubechecks
+
   destination:
     namespace: kubechecks
     name: in-cluster
