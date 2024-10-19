@@ -33,6 +33,8 @@ spec:
     repoURL: https://github.com/joelp172/k8s-tools.git
     targetRevision: HEAD
     path: argocd/test-apps
+    directory:
+      recurse: true
 
   # Destination cluster and namespace to deploy the application
   destination:
