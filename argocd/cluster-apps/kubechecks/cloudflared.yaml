@@ -95,6 +95,6 @@ data:
     ingress:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
     - hostname: kubechecks.joelpinder-dev.co.uk
-      service: http://kubechecks.kubechecks.svc:80
+      service: http://kubechecks.kubechecks.svc:8080
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
