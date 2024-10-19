@@ -4,7 +4,7 @@ kind: Application
 metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  name: kubechecks
+  name: reloader
   namespace: argocd
 spec:
   project: cluster-apps
@@ -14,16 +14,16 @@ spec:
       targetRevision: HEAD
       ref: values
 
-    # Install kubechecks app
-    - repoURL: https://zapier.github.io/kubechecks/
-      chart: kubechecks
-      targetRevision: 0.4.5
+    # Install Reloader app
+    - repoURL: https://stakater.github.io/stakater-charts
+      chart: reloader
+      targetRevision: 1.0.121
       helm:
         valueFiles:
-        - $values/argocd/cluster-apps/values/kubechecks-values.yaml
+        - $values/argocd/cluster-apps/values/reloader-values.yaml
 
   destination:
-    namespace: kubechecks
+    namespace: reloader
     name: in-cluster
 
   syncPolicy:
