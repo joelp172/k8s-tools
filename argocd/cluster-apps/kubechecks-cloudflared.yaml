@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
-  namespace: test-apps
+  namespace: kubechecks
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
@@ -73,7 +73,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared
-  namespace: test-apps
+  namespace: kubechecks
 data:
   config.yaml: |
     # Name of the tunnel you want to run
@@ -94,7 +94,7 @@ data:
     # E.g. `cloudflared tunnel route dns example-tunnel tunnel.example.com`.
     ingress:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
-    - hostname: nginx.joelpinder-dev.co.uk
-      service: http://nginx.test-apps.svc:80
+    - hostname: kubechecks.joelpinder-dev.co.uk
+      service: http://kubechecks.kubechecks.svc:80
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
