@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: test-apps
+  namespace: argocd
+spec:
+  description: Manages all test applications
+
+  destinations:
+  - namespace: '*'
+    name: in-cluster
+
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  sourceRepos:
+  - https://github.com/joelp172/k8s-tools.git
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: app-of-apps
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/joelp172/k8s-tools.git
+    targetRevision: HEAD
+    path: argocd/test-apps
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    name: in-cluster
+    namespace: argocd
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
