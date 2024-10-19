@@ -8,3 +8,16 @@ metadata:
   namespace: argocd
 data:
   accounts.kubechecks: apiKey
+  url: https://localhost:8080
+  # oidc.config: |
+    # name: Microsoft
+    # issuer: https://login.microsoftonline.com/c07dbe18-16b9-4f4b-b36c-b758bd1d5b8b/v2.0
+    # clientID: $oidc.azure.clientId
+    # clientSecret: $oidc.azure.clientSecret
+    # requestedIDTokenClaims:
+    #   groups:
+    #     essential: true
+    # requestedScopes:
+    #   - openid
+    #   - profile
+    #   - email
