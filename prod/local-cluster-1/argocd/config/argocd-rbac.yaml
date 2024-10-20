@@ -9,4 +9,4 @@ metadata:
 data:
   policy.default: role:readonly
   policy.csv: |
-    g, kubechecks, role:admin
+    p, kubechecks, applications, get, */*, allow
