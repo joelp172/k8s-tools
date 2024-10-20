@@ -2,7 +2,7 @@
 configMap:
   create: true
   env:
-    KUBECHECKS_ARGOCD_API_INSECURE: "true"
+    KUBECHECKS_ARGOCD_API_INSECURE: "false"
     KUBECHECKS_ARGOCD_API_PATH_PREFIX: /
     KUBECHECKS_ARGOCD_API_NAMESPACE: argocd
     KUBECHECKS_ARGOCD_API_PLAINTEXT: "true"
@@ -14,7 +14,7 @@ configMap:
     KUBECHECKS_OTEL_ENABLED: "false"
     KUBECHECKS_VCS_TYPE: "github"
     KUBECHECKS_TIDY_OUTDATED_COMMENTS_MODE: "hide" # other options delete
-    KUBECHECKS_MONITOR_ALL_APPLICATIONS: "true"
+    # KUBECHECKS_MONITOR_ALL_APPLICATIONS: "true"
 
 deployment:
   annotations:
