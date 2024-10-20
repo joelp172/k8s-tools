@@ -7,6 +7,7 @@ namePrefix:
 resources:
 - 00_project.yaml
 - ./argocd
+- ./bitwarden
 - ./kubechecks
 - ./nginx
 - ./prometheus

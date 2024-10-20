@@ -18,6 +18,7 @@ spec:
   - https://github.com/joelp172/k8s-tools.git
   - https://zapier.github.io/kubechecks/
   - https://stakater.github.io/stakater-charts
+  - https://charts.bitwarden.com/
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject

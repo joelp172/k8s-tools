@@ -1,0 +1,33 @@
+# https://github.com/grafana/helm-charts/tree/main/charts/grafana
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  name: bitwarden
+  namespace: argocd
+spec:
+  project: cluster-apps
+  sources:
+    # Give the Helm release access to a values file so we don't have to inline
+    - repoURL: https://github.com/joelp172/k8s-tools.git
+      targetRevision: HEAD
+      ref: values
+
+    # Install Reloader app
+    - repoURL: https://charts.bitwarden.com/
+      chart: sm-operator
+      targetRevision: 0.1.0-Beta
+      helm:
+        valueFiles: []
+
+  destination:
+    namespace: bitwarden
+    name: in-cluster
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
