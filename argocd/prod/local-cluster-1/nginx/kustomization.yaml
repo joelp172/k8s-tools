@@ -11,6 +11,11 @@ patches:
       kind: Application
       name: nginx
     patch: |-
+      # project name
+      - op: replace
+        path: /spec/project
+        value: local-cluster-1-test-apps
+
       # Cluster specific config path
       - op: replace
         path: /spec/sources/1/path

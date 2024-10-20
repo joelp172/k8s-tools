@@ -3,3 +3,15 @@ kind: Kustomization
 
 resources:
 - ../../../base/prometheus
+
+patches:
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: grafana
+    patch: |-
+      # project name
+      - op: replace
+        path: /spec/project
+        value: local-cluster-1-observability-apps

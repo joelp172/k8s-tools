@@ -11,6 +11,11 @@ patches:
       kind: Application
       name: tempo
     patch: |-
+      # project name
+      - op: replace
+        path: /spec/project
+        value: local-cluster-1-observability-apps
+
       # Helm values override
       - op: add
         path: /spec/sources/1/helm/valueFiles/-
