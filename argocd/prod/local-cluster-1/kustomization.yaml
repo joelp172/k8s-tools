@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - 00_project.yaml
+- 01_applications.yaml
 - ./argocd
 - ./kubechecks
 - ./nginx
