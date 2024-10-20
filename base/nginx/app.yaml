@@ -11,7 +11,7 @@ spec:
   sources:
     - repoURL: https://github.com/joelp172/k8s-tools.git
       targetRevision: HEAD
-      path: argocd/base/nginx/config
+      path: base/nginx/config
 
     # Cluster specific extras
     - repoURL: https://github.com/joelp172/k8s-tools.git

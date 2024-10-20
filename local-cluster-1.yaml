@@ -31,7 +31,7 @@ spec:
   source:
     repoURL: https://github.com/joelp172/k8s-tools.git
     targetRevision: HEAD
-    path: argocd/prod/local-cluster-1
+    path: prod/local-cluster-1
 
   # Destination cluster and namespace to deploy the application
   destination:
