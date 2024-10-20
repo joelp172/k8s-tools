@@ -4,26 +4,25 @@ kind: Application
 metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  name: grafana
+  name: reloader
   namespace: argocd
 spec:
-  project: observability-apps
+  project: cluster-apps
   sources:
     # Give the Helm release access to a values file so we don't have to inline
     - repoURL: https://github.com/joelp172/k8s-tools.git
       targetRevision: HEAD
       ref: values
 
-    # Install Grafana app
-    - repoURL: https://grafana.github.io/helm-charts
-      chart: grafana
-      targetRevision: 8.5.2
+    # Install Reloader app
+    - repoURL: https://stakater.github.io/stakater-charts
+      chart: reloader
+      targetRevision: 1.0.121
       helm:
-        valueFiles:
-        - $values/argocd/observability/values/grafana-values.yaml
+        valueFiles: []
 
   destination:
-    namespace: grafana
+    namespace: reloader
     name: in-cluster
 
   syncPolicy:

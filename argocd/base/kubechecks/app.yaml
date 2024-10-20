@@ -19,13 +19,12 @@ spec:
       chart: kubechecks
       targetRevision: 0.4.5
       helm:
-        valueFiles:
-        - $values/argocd/cluster-apps/values/kubechecks-values.yaml
+        valueFiles: []
 
     # Install extras
     - repoURL: https://github.com/joelp172/k8s-tools.git
       targetRevision: HEAD
-      path: argocd/cluster-apps/kubechecks
+      path: ""
 
   destination:
     namespace: kubechecks

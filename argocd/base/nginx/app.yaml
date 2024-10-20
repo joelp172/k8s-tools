@@ -4,26 +4,22 @@ kind: Application
 metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  name: reloader
+  name: nginx
   namespace: argocd
 spec:
-  project: cluster-apps
+  project: test-apps
   sources:
-    # Give the Helm release access to a values file so we don't have to inline
     - repoURL: https://github.com/joelp172/k8s-tools.git
       targetRevision: HEAD
-      ref: values
+      path: argocd/base/nginx/config
 
-    # Install Reloader app
-    - repoURL: https://stakater.github.io/stakater-charts
-      chart: reloader
-      targetRevision: 1.0.121
-      helm:
-        valueFiles:
-        - $values/argocd/cluster-apps/values/reloader-values.yaml
+    # Cluster specific extras
+    - repoURL: https://github.com/joelp172/k8s-tools.git
+      targetRevision: HEAD
+      path: ""
 
   destination:
-    namespace: reloader
+    namespace: nginx
     name: in-cluster
 
   syncPolicy:
