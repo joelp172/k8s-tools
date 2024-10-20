@@ -95,6 +95,6 @@ data:
     ingress:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
     - hostname: argocd.joelpinder-dev.co.uk
-      service: http://argocd-server.argocd.svc
+      service: https://argocd-server.argocd.svc
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
