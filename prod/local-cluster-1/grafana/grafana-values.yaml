@@ -1,4 +1,5 @@
 # values.yaml
+test: 1
 adminUser: admin
 adminPassword: P@ssw0rd
 
