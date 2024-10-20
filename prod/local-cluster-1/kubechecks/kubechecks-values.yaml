@@ -24,6 +24,11 @@ deployment:
     - secretRef:
         name: kubechecks-config
 
+  image:
+    pullPolicy: IfNotPresent
+    name: "ghcr.io/zapier/kubechecks"
+    tag: "v1.7.0"
+
 ingress:
   create: true
   className: "nginx"
