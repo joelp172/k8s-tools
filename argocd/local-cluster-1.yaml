@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: local-cluster-1-app-of-apps
+  namespace: argocd
+spec:
+  description: Manages all cluster related resources
+
+  destinations:
+  - namespace: '*'
+    name: in-cluster
+
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  sourceRepos:
+  - https://github.com/joelp172/k8s-tools.git
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-cluster-1-app-of-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: local-cluster-1-app-of-apps
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/joelp172/k8s-tools.git
+    targetRevision: HEAD
+    path: argocd/prod/local-cluster-1
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    name: in-cluster
+    namespace: argocd
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
