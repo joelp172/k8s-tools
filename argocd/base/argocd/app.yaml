@@ -14,6 +14,11 @@ spec:
       targetRevision: HEAD
       path: argocd/cluster-apps/argocd
 
+    # Extra config
+    - repoURL: https://github.com/joelp172/k8s-tools.git
+      targetRevision: HEAD
+      path: ""
+
   destination:
     namespace: argocd
     name: in-cluster
