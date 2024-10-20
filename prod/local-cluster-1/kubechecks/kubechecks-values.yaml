@@ -13,6 +13,7 @@ configMap:
     KUBECHECKS_OTEL_ENABLED: "false"
     KUBECHECKS_VCS_TYPE: "github"
     KUBECHECKS_TIDY_OUTDATED_COMMENTS_MODE: "hide" # other options delete
+    KUBECHECKS_MONITOR_ALL_APPLICATIONS: true
 
 deployment:
   annotations:
