@@ -4,9 +4,6 @@ kind: Kustomization
 resources:
   - ../../../base/tempo
 
-namePrefix:
-  local-cluster-1-
-
 patches:
   - target:
       group: argoproj.io

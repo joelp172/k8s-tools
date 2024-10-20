@@ -4,9 +4,6 @@ kind: Kustomization
 resources:
   - ../../../base/grafana
 
-namePrefix:
-  local-cluster-1-
-
 patches:
   - target:
       group: argoproj.io
