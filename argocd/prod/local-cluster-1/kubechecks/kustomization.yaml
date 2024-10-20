@@ -21,3 +21,8 @@ patches:
         path: /spec/sources/1/helm/valueFiles/-
         value:
           $values/argocd/prod/local-cluster-1/kubechecks/kubechecks-values.yaml
+
+      # Cluster specific config path
+      - op: replace
+        path: /spec/sources/1/path
+        value: argocd/prod/local-cluster-1/kubechecks/config

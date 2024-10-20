@@ -9,11 +9,6 @@ metadata:
 spec:
   project: cluster-apps
   sources:
-    # Give the Helm release access to a values file so we don't have to inline
-    - repoURL: https://github.com/joelp172/k8s-tools.git
-      targetRevision: HEAD
-      path: argocd/cluster-apps/argocd
-
     # Extra config
     - repoURL: https://github.com/joelp172/k8s-tools.git
       targetRevision: HEAD
