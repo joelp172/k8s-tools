@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../base/tempo
+
+namePrefix:
+  local-cluster-1-
+
+patches:
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: tempo
+    patch: |-
+      # Helm values override
+      - op: add
+        path: /spec/sources/1/helm/valueFiles/-
+        value:
+          $values/argocd/prod/local-cluster-1/tempo/tempo-values.yaml
