@@ -18,5 +18,5 @@ patches:
 
       # Cluster specific config path
       - op: replace
-        path: /spec/sources/1/path
+        path: /spec/sources/0/path
         value: argocd/prod/local-cluster-1/argocd/config
