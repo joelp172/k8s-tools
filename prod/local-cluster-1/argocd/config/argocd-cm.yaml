@@ -8,7 +8,7 @@ metadata:
   namespace: argocd
 data:
   accounts.kubechecks: apiKey
-  url: https://localhost:8080
+  url: https://argocd.joelpinder-dev.co.uk
   # oidc.config: |
     # name: Microsoft
     # issuer: https://login.microsoftonline.com/c07dbe18-16b9-4f4b-b36c-b758bd1d5b8b/v2.0
